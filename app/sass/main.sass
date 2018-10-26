@@ -11,46 +11,673 @@
 		box-sizing: border-box
 
 *::-webkit-input-placeholder
-	color: #666
+	color: #a5a5a5
 	opacity: 1
 
 *:-moz-placeholder
-	color: #666
+	color: #a5a5a5
 	opacity: 1
 
 *::-moz-placeholder
-	color: #666
+	color: #a5a5a5
 	opacity: 1
 
 *:-ms-input-placeholder
-	color: #666
+	color: #a5a5a5
 	opacity: 1
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
+	margin: 0
+	padding: 0
+	border: 0
+	font-size: 100%
+	font: inherit
+	vertical-align: baseline
 
-body input:focus:required:invalid,
-body textarea:focus:required:invalid
-	color: #666
-body input:required:valid,
-body textarea:required:valid
-	color: #666
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+	display: block
 
-html, body
-	height: 100%
+ol, ul
+	list-style: none
+
+blockquote, q
+	quotes: none
+
+blockquote:before, blockquote:after, q:before, q:after
+	content: ''
+	content: none
+
+table
+	border-collapse: collapse
+	border-spacing: 0
 
 body
 	font-size: 16px
 	min-width: 320px
 	position: relative
-	line-height: 1.65
+	color: $dark
 	font-family: $default-font
 	overflow-x: hidden
-
+.container
+	width: 100%
+	max-width: 1440px
+	padding: 0 10px
+	margin: 0 auto
+	position: relative
 .img-responsive
 	display: block
 	max-width: 100%
 	height: auto
-
+.nowrap
+	white-space: nowrap
+.btn
+	height: 50px
+	background-color: $dark
+	line-height: 50px
+	outline: none
+	border: none
+	cursor: pointer
+	color: $white
+	font-family: $default-font
+	font-size: 16px
+.label
+	text-transform: uppercase
+	position: absolute
+	left: 10px
+	top: 0
+.title
+	font-size: 60px
 .text-center
 	text-align: center
+.menu
+	display: flex
+	align-items: center
+	justify-content: flex-end
+	margin-top: 5px
+	&-list
+		display: flex
+		align-items: center
+		justify-content: flex-start
+		overflow: hidden
+		pointer-events: none
+		&.active
+			pointer-events: auto
+			.menu-item
+				transform: translateY(0)
+	&-item
+		transform: translateY(100%)
+		transition: all .5s ease
+		&:nth-child(2)
+			transition-delay: .05s
+		&:nth-child(3)
+			transition-delay: .1s
+		&:nth-child(4)
+			transition-delay: .15s
+		&:nth-child(5)
+			transition-delay: .2s
+		&:nth-child(6)
+			transition-delay: .25s
+		&-link
+			text-decoration: none
+			margin-right: 38px
+			color: $dark
+			&_white
+				color: $white
+	&-btn
+		cursor: pointer
+		margin-left: 20px
+		width: 24px
+		height: 14px
+		position: relative
+		&.active
+			.menu-line_top
+				transform: rotate(45deg)
+				top: 6px
+			.menu-line_bottom
+				transform: rotate(-45deg)
+				bottom: 6px
+	&-line
+		position: absolute
+		left: 0
+		width: 100%
+		height: 2px
+		background: #000000
+		transition: all .3s ease
+		&_top
+			top: 0
+		&_bottom
+			bottom: 0
+		&_white
+			background-color: $white
+.header
+	padding: 10px 52px
+	position: fixed
+	width: 100%
+	top: 20px
+	left: 0
+	z-index: 2
+	&-left
+		position: relative
+	&-logo
+		position: absolute
+		width: 30px
+		height: 30px
+		opacity: 0
+		transition: all .5s ease
+		&.active
+			opacity: 1
+		&-img
+			width: 100%
+			height: 100%
+	&-top
+		display: flex
+		align-items: flex-start
+		justify-content: space-between
+	&-phone
+		transition: all .5s ease
+		&.active
+			padding-left: 50px
+		&-link
+			font-family: $second-font
+			font-size: 16px
+			font-weight: 700
+			line-height: 31.88px
+			text-decoration: none
+			color: $dark
+			&_white
+				color: $white
+.first
+	padding: 90px 52px 52px
+	overflow: hidden
+	position: relative
+	&-main
+		text-align: center
+		padding: 140px 0 90px
+		position: relative
+		&-img
+			display: inline-block
+			width: 60px
+			height: 60px
+		&-logo
+			width: 100%
+			height: 100%
+		&-title
+			font-size: 60px
+			max-width: 720px
+			margin: 53px auto 38px
+		&-link
+			color: $dark
+			text-decoration: none
+			display: inline-block
+			position: relative
+			overflow: hidden
+			&:before
+				position: absolute
+				content: ''
+				left: 0
+				bottom: 0
+				width: 300px
+				height: 100%
+				background: url(../img/line.svg) no-repeat left -10px bottom
+				background-size: 300px
 
+			&:hover
+				&:before
+					transform: translate3d(-170px, 0, 0)
+					transition: transform .5s
+				.first-main-line
+					animation: anim-adrian 0.3s forwards
 
+		&-line
+			display: inline-block
+			width: 100%
+			height: 100%
+			padding-bottom: 4px
+		&-left
+			transform-origin: left top
+			transform: rotate(-90deg)
+			//position: fixed
+			left: 52px
+			top: 65%
+			display: flex
+			z-index: 2
+		&-right
+			transform-origin: left top
+			transform: rotate(-90deg)
+			//position: fixed
+			right: -125px
+			top: 65%
+			z-index: 2
+		&-lang
+			color: inherit
+			text-decoration: none
+			margin-right: 20px
+			display: flex
+			align-items: center
+			mix-blend-mode: exclusion
+			&.transform
+				.lang-line:before
+					left: 8px
+.lang-line
+	width: 0
+	height: 2px
+	margin-left: 12px
+	position: relative
+	&:before
+		content: ''
+		position: absolute
+		left: 0
+		top: 0
+		width: 100%
+		height: 100%
+		background: #000000
+		transition: all .25s cubic-bezier(.15,0,0,1)
+	&_white
+		&:before
+			background: #ffffff
+.first-main-img.sticky
+	.first-main-sticky
+		left: 0
+	.first-main-logo
+		width: 30px
+		height: 30px
+.first-main-lang.active
+	.lang-line
+		width: 30px
+.second
+	position: relative
+	overflow: hidden
+	&-main
+		display: flex
+	&-item
+		position: relative
+		width: 33.3%
+		&:hover
+			.second-item-text
+				padding-bottom: 20px
+			.second-item-line:before
+				opacity: 1
+		&-img
+			display: block
+			width: 100%
+		&-block
+			position: absolute
+			left: 60px
+			bottom: 50px
+			&:hover
+				.second-item-line:before
+					transform: translate3d(-205px, 0, 0)
+					transition: transform .5s
+		&-title
+			color: $white
+			font-size: 30px
+		&-text
+			color: $white
+			font-size: 14px
+			font-family: "MuseoSansCyrl-500"
+			position: relative
+			transition: all .3s ease
+		&-line
+			height: 100%
+			width: 90px
+			display: block
+			position: absolute
+			left: 0
+			top: 0
+			overflow: hidden
+			&:before
+				position: absolute
+				content: ''
+				left: 0
+				bottom: 0
+				width: 300px
+				height: 100%
+				background: url(../img/line2.svg) no-repeat left -10px bottom
+				background-size: 380px
+				opacity: 0
+				transition: opacity .5s ease
+.third
+	padding: 150px 0 160px
+	&-label
+		top: 10px
+	&-main
+		width: 700px
+		margin: 0 auto
+		position: relative
+		left: 35px
+	&-list
+		display: flex
+		align-items: flex-start
+		justify-content: space-between
+		flex-wrap: wrap
+		margin-top: 15px
+	&-item
+		width: 50%
+		margin-top: 70px
+		&:nth-child(odd)
+			padding-right: 30px
+		&:nth-child(even)
+			padding-left: 30px
+		&-title
+			font-family: "MuseoSansCyrl-700"
+			font-size: 24px
+			line-height: 23.91px
+			&_light
+				color: #878787
+		&-text
+			color: #878787
+			font-family: "MuseoSansCyrl-700"
+			font-size: 16px
+			line-height: 23.91px
+			margin-top: 23px
+.fourth
+	padding: 200px 0 125px
+	background: $dark
+	position: relative
+	overflow: hidden
+	&-label
+		color: $white
+		top: 40px
+	&-main
+		width: 1200px
+		margin: 0 auto
+		position: relative
+		left: 100px
+		display: flex
+		justify-content: space-between
+	&-left
+		width: 520px
+		height: 465px
+		position: relative
+		color: $white
+		flex-shrink: 0
+		margin-top: -30px
+		&-mask
+			width: 100%
+			height: 100%
+			mask: url(../img/mask.svg)
+			background: transparent
+			mask-size: 625px
+			position: absolute
+			left: -125px
+			top: 0
+		&-number
+			font-size: 470px
+			line-height: 350px
+		&-text
+			font-size: 120px
+			text-transform: uppercase
+			position: absolute
+			transform: rotate(-90deg)
+			white-space: nowrap
+			right: -430px
+			bottom: -5px
+			transform-origin: 0 100%
+			&_big
+				font-size: 195px
+	&-right
+		margin: 30px 0 0 -35px
+		&-title
+			color: $white
+		&-text
+			color: #787878
+			font-family: "MuseoSansCyrl-700"
+			font-size: 18px
+			margin-top: 27px
+.mask
+	&-circle
+		animation: 5s linear infinite pulse
+		width: 200px
+		height: 200px
+		transition: background-color 2s ease
+	&-circle1
+		position: absolute
+		left: 118px
+		top: -20px
+		background: #66bb46
+		border-radius: 50%
+		animation-delay: .3s
+	&-circle2
+		position: absolute
+		left: 340px
+		top: 0
+		background: #ffd800
+		border-radius: 50%
+		animation-delay: .5s
+	&-circle3
+		position: absolute
+		left: 207px
+		top: -44px
+		background: #e90e47
+		border-radius: 50%
+		animation-delay: 1.2s
+	&-circle4
+		position: absolute
+		left: 70px
+		top: 85px
+		background: #30a275
+		border-radius: 50%
+		animation-delay: 1s
+	&-circle5
+		position: absolute
+		left: 390px
+		top: 0
+		background: #199bdb
+		border-radius: 50%
+		animation-delay: 0.2s
+	&-circle6
+		position: absolute
+		left: 390px
+		top: 110px
+		background: #66bb46
+		border-radius: 50%
+		animation-delay: 0.6s
+	&-circle7
+		position: absolute
+		left: 445px
+		top: 45px
+		background: #4b2d83
+		border-radius: 50%
+		animation-delay: 1.5s
+	&-circle8
+		position: absolute
+		left: 266px
+		top: 90px
+		background: #c0327e
+		border-radius: 50%
+		animation-delay: .5s
+	&-circle9
+		position: absolute
+		left: 187px
+		top: 104px
+		background: #4b2d83
+		border-radius: 50%
+		animation-delay: 2.9s
+	&-circle10
+		position: absolute
+		left: 356px
+		top: 194px
+		background: #e90e47
+		border-radius: 50%
+		animation-delay: .4s
+	&-circle11
+		position: absolute
+		left: 69px
+		top: 182px
+		background: #199bdb
+		border-radius: 50%
+		animation-delay: .8s
+	&-circle12
+		position: absolute
+		left: 343px
+		top: 286px
+		background: #199bdb
+		border-radius: 50%
+		animation-delay: 1.4s
+	&-circle13
+		position: absolute
+		left: 253px
+		top: 207px
+		background: #ffd800
+		border-radius: 50%
+		animation-delay: 0.3s
+	&-circle14
+		position: absolute
+		left: 265px
+		top: 287px
+		background: #ce0814
+		border-radius: 50%
+		animation-delay: 1.1s
+	&-circle15
+		position: absolute
+		left: 98px
+		top: 339px
+		background: #ce0814
+		border-radius: 50%
+		animation-delay: 1.8s
+	&-circle15
+		position: absolute
+		left: 187px
+		top: 249px
+		background: #bc3c99
+		border-radius: 50%
+		animation-delay: 1.2s
+	&-circle16
+		position: absolute
+		left: 167px
+		top: 310px
+		background: #192b85
+		border-radius: 50%
+		animation-delay: 0.7s
+	&-circle17
+		position: absolute
+		left: 60px
+		top: 18px
+		background: #ffd800
+		border-radius: 50%
+		animation-delay: 1s
+	&-circle18
+		position: absolute
+		left: 90px
+		top: 242px
+		background: #e90e47
+		border-radius: 50%
+		animation-delay: 2s
+//@keyframes pulse
+//	0%
+//		transform: scale(0.7) translate(0, 0)
+//	25%
+//		transform: scale(0.85) translate(10px, 10px)
+//	50%
+//		transform: scale(1) translate(0, 20px)
+//	75%
+//		transform: scale(0.85) translate(-10px, 10px)
+//	100%
+//		transform: scale(0.7) translate(0, 0)
+@keyframes pulse
+	0%
+		transform: scale(0.5)
+	50%
+		transform: scale(1)
+	100%
+		transform: scale(0.5)
+.fifth
+	padding: 150px 60px 57px
+	&-main
+		position: relative
+		padding-bottom: 100px
+	&-center
+		max-width: 700px
+		margin: 0 auto 0
+		position: relative
+		left: 35px
+	&-form
+		margin-top: 35px
+	&-row
+		display: flex
+		align-items: center
+		justify-content: space-between
+		margin-bottom: 60px
+		&-item
+			width: 50%
+			&:first-child
+				margin-right: 60px
+	&-btn
+		&-text
+			display: inline-block
+		&:hover
+			.fifth-btn-text
+				animation: anim-adrian 0.3s forwards
+	&-input
+		padding: 15px 20px
+		color: #a5a5a5
+		border: none
+		border-bottom: 2px solid #b5b5b5
+		outline: none
+		font-family: $default-font
+		font-size: 16px
+	&-description
+		color: #838383
+		font-family: "MuseoSansCyrl-700"
+		font-size: 14px
+		line-height: 23.91px
+.sixth
+	position: relative
+	overflow: hidden
+	&-flex
+		display: flex
+	&-item
+		width: 33.3%
+	&-link
+		display: block
+		width: 100%
+		padding-bottom: 72%
+		position: relative
+		background-color: #212121
+		transition: background-color .5s ease
+		&:hover
+			background-color: #292929
+	&-block
+		position: absolute
+		width: 100%
+		height: 100%
+		left: 0
+		top: 0
+		display: flex
+		align-items: center
+		justify-content: center
+		flex-direction: column
+	&-text
+		color: #878787
+		font-family: "MuseoSansCyrl-700"
+		font-size: 16px
+	&-title
+		color: $white
+		font-family: $default-font
+		font-size: 60px
+@keyframes up-animation
+	0%
+		opacity: 0
+		transform: translateY(70px)
+	100%
+		opacity: 1
+		transform: translateY(0)
+.up-animation
+	transition: transform 0.6s cubic-bezier(0.895, 0.03, 0.685, 0.22), opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)
+	animation-name: up-animation
+@keyframes anim-adrian
+	50%
+		opacity: 0
+		transform: translate3d(0, -100%, 0)
+	51%
+		opacity: 0
+		transform: translate3d(0, 100%, 0)
+	100%
+		opacity: 1
+		transform: translate3d(0, 0, 0)
+.startLogo
+	position: fixed
+.altLogo, .altLogo2
+	position: absolute
+	color: #ffffff
+	z-index: 2
 @import "media" // Всегда в конце
